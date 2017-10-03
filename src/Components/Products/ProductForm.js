@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateProduct, createProduct, destroyProduct } from '../../redux';
+
+import { mappers } from '../../redux';
+const { productFormStateMapper, productFormDispatchMapper } = mappers;
 
 class ProductForm extends Component{
   constructor({ product }){
@@ -64,27 +66,4 @@ class ProductForm extends Component{
   }
 }
 
-const mapDispatchToProps = (dispatch, { match, history })=> {
-  const editing = !!match.params.id;
-  const method = editing ? updateProduct : createProduct;
-  return {
-    save: (product)=> dispatch(method(product)),
-    destroy: (product)=> {
-      return dispatch(destroyProduct(product))
-                .then(()=> history.push('/products'));
-    }
-  };
-};
-
-const mapStateToProps = ({ products }, { match })=> {
-  const editing = !!match.params.id;
-  let product = products.find( product => product.id === match.params.id*1); 
-  if(!editing){
-    product = { name: '' };
-  }
-  return {
-    product,
-    editing 
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);
+export default connect(productFormStateMapper, productFormDispatchMapper)(ProductForm);

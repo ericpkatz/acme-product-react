@@ -8,7 +8,7 @@ const Products = ({ products, pathname }) => {
   return (
     <div>
       <h1>
-        Products { products.length }
+        Products ({ products.length })
       </h1>
       <ProductList products={ products } pathname= { pathname } />
       <Link to='/products/add'>Add A Product</Link>

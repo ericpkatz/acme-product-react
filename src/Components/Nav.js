@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadProducts } from '../redux';
+import { actions } from '../redux';
 import { Link } from 'react-router-dom';
 
 class Nav extends Component{
@@ -39,7 +39,7 @@ class Nav extends Component{
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    loadProducts: ()=> dispatch(loadProducts())
+    loadProducts: ()=> dispatch(actions.loadProducts())
   };
 };
 

@@ -11,7 +11,7 @@ const ProductList = ({ products, pathname })=> {
           return (
             <li key={ product.id }>
               {
-                active ? <span style={{ border: 'solid 1px black'}}>product.name</span>  : (
+                active ? <span style={{ border: 'solid 1px black'}}>{ product.name }</span>  : (
                   <Link to={ url }>{ product.name }</Link>
                 )
               }
